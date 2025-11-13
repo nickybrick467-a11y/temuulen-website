@@ -1,0 +1,776 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFusion - iPhone 17 & Samsung S25</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --apple: #007AFF;
+            --samsung: #1428A0;
+            --dark: #1D1D1F;
+            --light: #F5F5F7;
+            --accent: #FF2D55;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .cart-icon {
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark), #2D2D30);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: #FF1A4A;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,45,85,0.3);
+        }
+        
+        .btn-apple {
+            background-color: var(--apple);
+        }
+        
+        .btn-apple:hover {
+            background-color: #0062CC;
+            box-shadow: 0 10px 20px rgba(0,122,255,0.3);
+        }
+        
+        .btn-samsung {
+            background-color: var(--samsung);
+        }
+        
+        .btn-samsung:hover {
+            background-color: #0F1E8C;
+            box-shadow: 0 10px 20px rgba(20,40,160,0.3);
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+        }
+        
+        .product-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-header {
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .iphone-header {
+            background: linear-gradient(135deg, var(--apple), #5AC8FA);
+        }
+        
+        .samsung-header {
+            background: linear-gradient(135deg, var(--samsung), #6C47FF);
+        }
+        
+        .product-header h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .product-image {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .phone-img {
+            max-width: 80%;
+            max-height: 90%;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .phone-img {
+            transform: scale(1.05);
+        }
+        
+        .product-details {
+            padding: 30px;
+        }
+        
+        .price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.5rem;
+            margin-left: 10px;
+        }
+        
+        .discount {
+            background: var(--accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+        
+        .specs {
+            margin: 25px 0;
+        }
+        
+        .specs h4 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .specs ul {
+            list-style: none;
+        }
+        
+        .specs li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .specs i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--dark);
+            color: var(--dark);
+            flex: 1;
+        }
+        
+        .btn-outline:hover {
+            background: var(--dark);
+            color: white;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        /* Comparison Section */
+        .comparison {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .comparison-table th {
+            background: var(--dark);
+            color: white;
+            padding: 20px;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        .spec-value {
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-column p {
+            margin-bottom: 20px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        .disclaimer {
+            background: #333;
+            padding: 20px;
+            text-align: center;
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-top: 40px;
+            border-radius: 10px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .product-header h3 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-container">
+                <a href="#" class="logo">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>TechFusion</span>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#comparison">Compare</a></li>
+                        <li class="cart-icon">
+                            <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                            <span class="cart-count">2</span>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>The Future of Mobile Technology</h1>
+            <p>Experience the next generation of smartphones with iPhone 17 and Samsung Galaxy S25. Revolutionary features, stunning design, and unparalleled performance.</p>
+            <a href="#products" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Flagship Smartphones</h2>
+                <p>Discover our premium collection of next-generation devices</p>
+            </div>
+            <div class="products-grid">
+                <!-- iPhone 17 -->
+                <div class="product-card">
+                    <div class="product-header iphone-header">
+                        <h3>iPhone 17 Pro Max</h3>
+                        <p>The most powerful iPhone ever</p>
+                    </div>
+                    <div class="product-image">
+                        <!-- iPhone illustration -->
+                        <svg class="phone-img" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="30" y="10" width="140" height="280" rx="25" fill="#333"/>
+                            <rect x="35" y="15" width="130" height="270" rx="20" fill="#1D1D1F"/>
+                            <rect x="65" y="5" width="70" height="10" rx="5" fill="#333"/>
+                            <circle cx="100" cy="40" r="5" fill="#333"/>
+                            <rect x="50" y="60" width="100" height="180" rx="10" fill="#007AFF" opacity="0.7"/>
+                        </svg>
+                    </div>
+                    <div class="product-details">
+                        <div class="price">
+                            $1,299 <span class="original-price">$1,499</span> <span class="discount">Save $200</span>
+                        </div>
+                        <div class="specs">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> A18 Bionic Chip with Neural Engine</li>
+                                <li><i class="fas fa-check"></i> 6.9" Super Retina XDR Display</li>
+                                <li><i class="fas fa-check"></i> Triple 48MP Camera System</li>
+                                <li><i class="fas fa-check"></i> 5G Connectivity & Satellite SOS</li>
+                                <li><i class="fas fa-check"></i> All-day Battery Life</li>
+                            </ul>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-apple">Add to Cart</button>
+                            <button class="btn btn-outline">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Samsung S25 -->
+                <div class="product-card">
+                    <div class="product-header samsung-header">
+                        <h3>Samsung Galaxy S25 Ultra</h3>
+                        <p>Beyond the limits of innovation</p>
+                    </div>
+                    <div class="product-image">
+                        <!-- Samsung illustration -->
+                        <svg class="phone-img" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="25" y="10" width="150" height="280" rx="5" fill="#333"/>
+                            <rect x="30" y="15" width="140" height="270" rx="2" fill="#1D1D1F"/>
+                            <rect x="80" y="5" width="40" height="8" rx="4" fill="#333"/>
+                            <rect x="45" y="60" width="110" height="180" rx="5" fill="#1428A0" opacity="0.7"/>
+                            <rect x="85" cy="280" width="30" height="30" rx="15" fill="#333"/>
+                        </svg>
+                    </div>
+                    <div class="product-details">
+                        <div class="price">
+                            $1,199 <span class="original-price">$1,399</span> <span class="discount">Save $200</span>
+                        </div>
+                        <div class="specs">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Snapdragon 8 Gen 3 Processor</li>
+                                <li><i class="fas fa-check"></i> 6.8" Dynamic AMOLED 2X Display</li>
+                                <li><i class="fas fa-check"></i> 200MP Quad Camera System</li>
+                                <li><i class="fas fa-check"></i> S Pen Included & 5G+ Ready</li>
+                                <li><i class="fas fa-check"></i> 5000mAh Fast Charging Battery</li>
+                            </ul>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn btn-samsung">Add to Cart</button>
+                            <button class="btn btn-outline">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Revolutionary Features</h2>
+                <p>Experience cutting-edge technology that redefines mobile possibilities</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Advanced Photography</h3>
+                    <p>Professional-grade camera systems with computational photography and AI enhancement.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Lightning Performance</h3>
+                    <p>Next-generation processors deliver desktop-level performance in your pocket.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-satellite"></i>
+                    </div>
+                    <h3>Satellite Connectivity</h3>
+                    <p>Stay connected even in remote areas with advanced satellite communication technology.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI Integration</h3>
+                    <p>Smart assistants that learn from you and anticipate your needs throughout the day.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison" id="comparison">
+        <div class="container">
+            <div class="section-title">
+                <h2>Technical Comparison</h2>
+                <p>See how these flagship devices stack up against each other</p>
+            </div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Specification</th>
+                        <th>iPhone 17 Pro Max</th>
+                        <th>Samsung Galaxy S25 Ultra</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Display</td>
+                        <td class="spec-value">6.9" Super Retina XDR</td>
+                        <td class="spec-value">6.8" Dynamic AMOLED 2X</td>
+                    </tr>
+                    <tr>
+                        <td>Processor</td>
+                        <td class="spec-value">A18 Bionic Chip</td>
+                        <td class="spec-value">Snapdragon 8 Gen 3</td>
+                    </tr>
+                    <tr>
+                        <td>RAM</td>
+                        <td class="spec-value">8GB</td>
+                        <td class="spec-value">12GB / 16GB</td>
+                    </tr>
+                    <tr>
+                        <td>Storage</td>
+                        <td class="spec-value">256GB / 512GB / 1TB</td>
+                        <td class="spec-value">256GB / 512GB / 1TB</td>
+                    </tr>
+                    <tr>
+                        <td>Main Camera</td>
+                        <td class="spec-value">48MP Triple System</td>
+                        <td class="spec-value">200MP Quad System</td>
+                    </tr>
+                    <tr>
+                        <td>Battery</td>
+                        <td class="spec-value">All-day (4500mAh)</td>
+                        <td class="spec-value">5000mAh Fast Charging</td>
+                    </tr>
+                    <tr>
+                        <td>5G</td>
+                        <td class="spec-value">Yes + Satellite SOS</td>
+                        <td class="spec-value">Yes + 5G+</td>
+                    </tr>
+                    <tr>
+                        <td>Operating System</td>
+                        <td class="spec-value">iOS 18</td>
+                        <td class="spec-value">Android 15 with One UI 7</td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td class="spec-value">From $1,299</td>
+                        <td class="spec-value">From $1,199</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TechFusion</h3>
+                    <p>Your premier destination for cutting-edge mobile technology and innovation.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#">iPhone 17 Series</a></li>
+                        <li><a href="#">Samsung S25 Series</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Trade-In Program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns & Warranty</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="#">support@techfusion.demo</a></li>
+                        <li><a href="#">1-800-TECH-FUSION</a></li>
+                        <li><a href="#">Store Locations</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="disclaimer">
+                <p><strong>Educational Project Notice:</strong> This website is created for educational purposes only. iPhone 17 and Samsung Galaxy S25 are fictional products. All specifications, features, and pricing are imaginary and for demonstration purposes only.</p>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 TechFusion Demo. All rights reserved. This is a fictional website for educational use.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple cart functionality for demo purposes
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.textContent.includes('Add to Cart')) {
+                    const countElement = document.querySelector('.cart-count');
+                    let count = parseInt(countElement.textContent);
+                    countElement.textContent = count + 1;
+                    
+                    // Show a confirmation
+                    alert('Product added to cart! (This is a demo)');
+                }
+            });
+        });
+        
+        // Update copyright year automatically
+        document.querySelector('.copyright p').innerHTML = `&copy; ${new Date().getFullYear()} TechFusion Demo. All rights reserved. This is a fictional website for educational use.`;
+    </script>
+</body>
+</html>
+```
