@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechFusion - iPhone 17 & Samsung S25</title>
+    <title>TechFusion - Premium Smartphones</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -17,6 +17,9 @@
         :root {
             --apple: #007AFF;
             --samsung: #1428A0;
+            --google: #4285F4;
+            --oneplus: #EB0029;
+            --xiaomi: #FF6700;
             --dark: #1D1D1F;
             --light: #F5F5F7;
             --accent: #FF2D55;
@@ -162,6 +165,15 @@
             box-shadow: 0 10px 20px rgba(20,40,160,0.3);
         }
         
+        .btn-google {
+            background-color: var(--google);
+        }
+        
+        .btn-google:hover {
+            background-color: #3367D6;
+            box-shadow: 0 10px 20px rgba(66,133,244,0.3);
+        }
+        
         /* Products Section */
         .products {
             padding: 100px 0;
@@ -185,101 +197,111 @@
             margin: 0 auto;
         }
         
+        .brand-section {
+            margin-bottom: 80px;
+        }
+        
+        .brand-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .brand-title i {
+            margin-right: 15px;
+        }
+        
+        .apple-title {
+            color: var(--apple);
+        }
+        
+        .samsung-title {
+            color: var(--samsung);
+        }
+        
+        .google-title {
+            color: var(--google);
+        }
+        
+        .other-title {
+            color: var(--dark);
+        }
+        
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
         
         .product-card {
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform 0.3s;
+            background: white;
         }
         
         .product-card:hover {
             transform: translateY(-10px);
         }
         
-        .product-header {
-            padding: 30px;
-            text-align: center;
-            color: white;
-        }
-        
-        .iphone-header {
-            background: linear-gradient(135deg, var(--apple), #5AC8FA);
-        }
-        
-        .samsung-header {
-            background: linear-gradient(135deg, var(--samsung), #6C47FF);
-        }
-        
-        .product-header h3 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        
-        .product-header p {
-            opacity: 0.9;
-            font-size: 1.1rem;
-        }
-        
         .product-image {
-            height: 300px;
+            height: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #f9f9f9;
-            position: relative;
-            overflow: hidden;
+            background: linear-gradient(135deg, #f5f5f7, #e0e0e0);
+            padding: 20px;
         }
         
-        .phone-img {
-            max-width: 80%;
-            max-height: 90%;
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
             transition: transform 0.5s;
         }
         
-        .product-card:hover .phone-img {
+        .product-card:hover .product-image img {
             transform: scale(1.05);
         }
         
         .product-details {
-            padding: 30px;
+            padding: 25px;
+        }
+        
+        .product-details h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark);
         }
         
         .price {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: var(--dark);
         }
         
         .original-price {
             text-decoration: line-through;
             color: #999;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             margin-left: 10px;
         }
         
         .discount {
             background: var(--accent);
             color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.8rem;
             margin-left: 10px;
         }
         
         .specs {
-            margin: 25px 0;
-        }
-        
-        .specs h4 {
-            margin-bottom: 15px;
-            font-size: 1.2rem;
+            margin: 15px 0;
         }
         
         .specs ul {
@@ -287,26 +309,35 @@
         }
         
         .specs li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
+            font-size: 0.9rem;
+            color: #666;
         }
         
         .specs i {
-            margin-right: 10px;
+            margin-right: 8px;
             color: var(--accent);
+            font-size: 0.8rem;
         }
         
         .product-actions {
             display: flex;
-            gap: 15px;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .btn-small {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            flex: 1;
         }
         
         .btn-outline {
             background: transparent;
             border: 2px solid var(--dark);
             color: var(--dark);
-            flex: 1;
         }
         
         .btn-outline:hover {
@@ -350,39 +381,131 @@
             font-size: 1.3rem;
         }
         
-        /* Comparison Section */
-        .comparison {
+        /* Contact Section */
+        .contact {
             padding: 100px 0;
             background: white;
         }
         
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 40px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-radius: 10px;
-            overflow: hidden;
+        .contact-container {
+            display: flex;
+            gap: 50px;
         }
         
-        .comparison-table th {
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .contact-info p {
+            margin-bottom: 30px;
+            color: #666;
+        }
+        
+        .contact-details {
+            margin-bottom: 40px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-detail i {
+            width: 40px;
+            height: 40px;
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
             background: var(--dark);
             color: white;
-            padding: 20px;
-            text-align: left;
+            border-radius: 50%;
+            transition: all 0.3s;
         }
         
-        .comparison-table td {
-            padding: 20px;
-            border-bottom: 1px solid #eee;
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
         }
         
-        .comparison-table tr:nth-child(even) {
+        .contact-form {
+            flex: 1;
             background: #f9f9f9;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
-        .spec-value {
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
             font-weight: 600;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #FF1A4A;
         }
         
         /* Footer */
@@ -448,8 +571,8 @@
         
         /* Responsive Styles */
         @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: 1fr;
+            .contact-container {
+                flex-direction: column;
             }
             
             .hero h1 {
@@ -478,7 +601,7 @@
                 font-size: 2rem;
             }
             
-            .product-header h3 {
+            .brand-title {
                 font-size: 1.7rem;
             }
         }
@@ -498,7 +621,7 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#products">Products</a></li>
                         <li><a href="#features">Features</a></li>
-                        <li><a href="#comparison">Compare</a></li>
+                        <li><a href="#contact">Contact</a></li>
                         <li class="cart-icon">
                             <a href="#"><i class="fas fa-shopping-cart"></i></a>
                             <span class="cart-count">2</span>
@@ -513,7 +636,7 @@
     <section class="hero" id="home">
         <div class="container">
             <h1>The Future of Mobile Technology</h1>
-            <p>Experience the next generation of smartphones with iPhone 17 and Samsung Galaxy S25. Revolutionary features, stunning design, and unparalleled performance.</p>
+            <p>Experience the next generation of smartphones with the latest iPhone 17 series, Samsung Galaxy S25, and premium Android devices.</p>
             <a href="#products" class="btn">Shop Now</a>
         </div>
     </section>
@@ -522,80 +645,207 @@
     <section class="products" id="products">
         <div class="container">
             <div class="section-title">
-                <h2>Flagship Smartphones</h2>
-                <p>Discover our premium collection of next-generation devices</p>
+                <h2>Premium Smartphones</h2>
+                <p>Discover our exclusive collection of next-generation devices</p>
             </div>
-            <div class="products-grid">
-                <!-- iPhone 17 -->
-                <div class="product-card">
-                    <div class="product-header iphone-header">
-                        <h3>iPhone 17 Pro Max</h3>
-                        <p>The most powerful iPhone ever</p>
-                    </div>
-                    <div class="product-image">
-                        <!-- iPhone illustration -->
-                        <svg class="phone-img" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="30" y="10" width="140" height="280" rx="25" fill="#333"/>
-                            <rect x="35" y="15" width="130" height="270" rx="20" fill="#1D1D1F"/>
-                            <rect x="65" y="5" width="70" height="10" rx="5" fill="#333"/>
-                            <circle cx="100" cy="40" r="5" fill="#333"/>
-                            <rect x="50" y="60" width="100" height="180" rx="10" fill="#007AFF" opacity="0.7"/>
-                        </svg>
-                    </div>
-                    <div class="product-details">
-                        <div class="price">
-                            $1,299 <span class="original-price">$1,499</span> <span class="discount">Save $200</span>
+            
+            <!-- Apple iPhones -->
+            <div class="brand-section">
+                <h2 class="brand-title apple-title">
+                    <i class="fab fa-apple"></i>
+                    iPhone 17 Series
+                </h2>
+                <div class="products-grid">
+                    <!-- iPhone 17 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="iPhone 17">
                         </div>
-                        <div class="specs">
-                            <h4>Key Features</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> A18 Bionic Chip with Neural Engine</li>
-                                <li><i class="fas fa-check"></i> 6.9" Super Retina XDR Display</li>
-                                <li><i class="fas fa-check"></i> Triple 48MP Camera System</li>
-                                <li><i class="fas fa-check"></i> 5G Connectivity & Satellite SOS</li>
-                                <li><i class="fas fa-check"></i> All-day Battery Life</li>
-                            </ul>
+                        <div class="product-details">
+                            <h3>iPhone 17</h3>
+                            <div class="price">
+                                $999 <span class="original-price">$1,099</span> <span class="discount">Save $100</span>
+                            </div>
+                            <div class="specs">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> 6.1" Super Retina XDR Display</li>
+                                    <li><i class="fas fa-check"></i> A17 Bionic Chip</li>
+                                    <li><i class="fas fa-check"></i> Dual 48MP Camera System</li>
+                                    <li><i class="fas fa-check"></i> All-day Battery Life</li>
+                                </ul>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-small btn-apple">Add to Cart</button>
+                                <button class="btn btn-small btn-outline">Details</button>
+                            </div>
                         </div>
-                        <div class="product-actions">
-                            <button class="btn btn-apple">Add to Cart</button>
-                            <button class="btn btn-outline">Learn More</button>
+                    </div>
+                    
+                    <!-- iPhone 17 Pro -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="iPhone 17 Pro">
+                        </div>
+                        <div class="product-details">
+                            <h3>iPhone 17 Pro</h3>
+                            <div class="price">
+                                $1,199 <span class="original-price">$1,299</span> <span class="discount">Save $100</span>
+                            </div>
+                            <div class="specs">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> 6.3" ProMotion Display</li>
+                                    <li><i class="fas fa-check"></i> A17 Pro Chip</li>
+                                    <li><i class="fas fa-check"></i> Triple 48MP Pro Camera</li>
+                                    <li><i class="fas fa-check"></i> ProRAW & ProRes Video</li>
+                                </ul>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-small btn-apple">Add to Cart</button>
+                                <button class="btn btn-small btn-outline">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- iPhone 17 Pro Max -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="iPhone 17 Pro Max">
+                        </div>
+                        <div class="product-details">
+                            <h3>iPhone 17 Pro Max</h3>
+                            <div class="price">
+                                $1,399 <span class="original-price">$1,499</span> <span class="discount">Save $100</span>
+                            </div>
+                            <div class="specs">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> 6.9" Super Retina XDR</li>
+                                    <li><i class="fas fa-check"></i> A18 Bionic Chip</li>
+                                    <li><i class="fas fa-check"></i> Advanced 48MP Camera System</li>
+                                    <li><i class="fas fa-check"></i> Satellite Connectivity</li>
+                                </ul>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-small btn-apple">Add to Cart</button>
+                                <button class="btn btn-small btn-outline">Details</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Samsung S25 -->
-                <div class="product-card">
-                    <div class="product-header samsung-header">
-                        <h3>Samsung Galaxy S25 Ultra</h3>
-                        <p>Beyond the limits of innovation</p>
-                    </div>
-                    <div class="product-image">
-                        <!-- Samsung illustration -->
-                        <svg class="phone-img" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="25" y="10" width="150" height="280" rx="5" fill="#333"/>
-                            <rect x="30" y="15" width="140" height="270" rx="2" fill="#1D1D1F"/>
-                            <rect x="80" y="5" width="40" height="8" rx="4" fill="#333"/>
-                            <rect x="45" y="60" width="110" height="180" rx="5" fill="#1428A0" opacity="0.7"/>
-                            <rect x="85" cy="280" width="30" height="30" rx="15" fill="#333"/>
-                        </svg>
-                    </div>
-                    <div class="product-details">
-                        <div class="price">
-                            $1,199 <span class="original-price">$1,399</span> <span class="discount">Save $200</span>
+            </div>
+            
+            <!-- Samsung Galaxy -->
+            <div class="brand-section">
+                <h2 class="brand-title samsung-title">
+                    <i class="fab fa-android"></i>
+                    Samsung Galaxy S25 Series
+                </h2>
+                <div class="products-grid">
+                    <!-- Samsung S25 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Samsung S25">
                         </div>
-                        <div class="specs">
-                            <h4>Key Features</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Snapdragon 8 Gen 3 Processor</li>
-                                <li><i class="fas fa-check"></i> 6.8" Dynamic AMOLED 2X Display</li>
-                                <li><i class="fas fa-check"></i> 200MP Quad Camera System</li>
-                                <li><i class="fas fa-check"></i> S Pen Included & 5G+ Ready</li>
-                                <li><i class="fas fa-check"></i> 5000mAh Fast Charging Battery</li>
-                            </ul>
+                        <div class="product-details">
+                            <h3>Samsung Galaxy S25</h3>
+                            <div class="price">
+                                $899 <span class="original-price">$999</span> <span class="discount">Save $100</span>
+                            </div>
+                            <div class="specs">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> 6.2" Dynamic AMOLED 2X</li>
+                                    <li><i class="fas fa-check"></i> Snapdragon 8 Gen 3</li>
+                                    <li><i class="fas fa-check"></i> Triple 50MP Camera</li>
+                                    <li><i class="fas fa-check"></i> 5G Connectivity</li>
+                                </ul>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-small btn-samsung">Add to Cart</button>
+                                <button class="btn btn-small btn-outline">Details</button>
+                            </div>
                         </div>
-                        <div class="product-actions">
-                            <button class="btn btn-samsung">Add to Cart</button>
-                            <button class="btn btn-outline">Learn More</button>
+                    </div>
+                    
+                    <!-- Samsung S25 Ultra -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Samsung S25 Ultra">
+                        </div>
+                        <div class="product-details">
+                            <h3>Samsung Galaxy S25 Ultra</h3>
+                            <div class="price">
+                                $1,199 <span class="original-price">$1,299</span> <span class="discount">Save $100</span>
+                            </div>
+                            <div class="specs">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> 6.8" Dynamic AMOLED 2X</li>
+                                    <li><i class="fas fa-check"></i> Snapdragon 8 Gen 3</li>
+                                    <li><i class="fas fa-check"></i> 200MP Quad Camera System</li>
+                                    <li><i class="fas fa-check"></i> S Pen Included</li>
+                                </ul>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-small btn-samsung">Add to Cart</button>
+                                <button class="btn btn-small btn-outline">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Other Brands -->
+            <div class="brand-section">
+                <h2 class="brand-title other-title">
+                    <i class="fas fa-mobile-alt"></i>
+                    Premium Android Devices
+                </h2>
+                <div class="products-grid">
+                    <!-- Google Pixel -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Google Pixel 9 Pro">
+                        </div>
+                        <div class="product-details">
+                            <h3>Google Pixel 9 Pro</h3>
+                            <div class="price">
+                                $999 <span class="original-price">$1,099</span> <span class="discount">Save $100</span>
+                            </div>
+                            <div class="specs">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> 6.7" OLED Display</li>
+                                    <li><i class="fas fa-check"></i> Google Tensor G4</li>
+                                    <li><i class="fas fa-check"></i> Advanced AI Camera</li>
+                                    <li><i class="fas fa-check"></i> Pure Android Experience</li>
+                                </ul>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-small btn-google">Add to Cart</button>
+                                <button class="btn btn-small btn-outline">Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- OnePlus -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="OnePlus 12">
+                        </div>
+                        <div class="product-details">
+                            <h3>OnePlus 12</h3>
+                            <div class="price">
+                                $849 <span class="original-price">$949</span> <span class="discount">Save $100</span>
+                            </div>
+                            <div class="specs">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> 6.7" Fluid AMOLED</li>
+                                    <li><i class="fas fa-check"></i> Snapdragon 8 Gen 3</li>
+                                    <li><i class="fas fa-check"></i> Hasselblad Camera</li>
+                                    <li><i class="fas fa-check"></i> 100W Fast Charging</li>
+                                </ul>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-small" style="background:#EB0029">Add to Cart</button>
+                                <button class="btn btn-small btn-outline">Details</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -607,105 +857,107 @@
     <section class="features" id="features">
         <div class="container">
             <div class="section-title">
-                <h2>Revolutionary Features</h2>
-                <p>Experience cutting-edge technology that redefines mobile possibilities</p>
+                <h2>Why Choose TechFusion?</h2>
+                <p>We provide exceptional service and the latest technology</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-camera"></i>
+                        <i class="fas fa-shipping-fast"></i>
                     </div>
-                    <h3>Advanced Photography</h3>
-                    <p>Professional-grade camera systems with computational photography and AI enhancement.</p>
+                    <h3>Free Shipping</h3>
+                    <p>Free express delivery on all orders over $500. Receive your device within 2 business days.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3>Lightning Performance</h3>
-                    <p>Next-generation processors deliver desktop-level performance in your pocket.</p>
+                    <h3>2-Year Warranty</h3>
+                    <p>All our devices come with comprehensive 2-year manufacturer warranty for peace of mind.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-satellite"></i>
+                        <i class="fas fa-sync-alt"></i>
                     </div>
-                    <h3>Satellite Connectivity</h3>
-                    <p>Stay connected even in remote areas with advanced satellite communication technology.</p>
+                    <h3>30-Day Returns</h3>
+                    <p>Not satisfied? Return your device within 30 days for a full refund, no questions asked.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
+                        <i class="fas fa-headset"></i>
                     </div>
-                    <h3>AI Integration</h3>
-                    <p>Smart assistants that learn from you and anticipate your needs throughout the day.</p>
+                    <h3>24/7 Support</h3>
+                    <p>Our customer service team is available around the clock to assist with any inquiries.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Comparison Section -->
-    <section class="comparison" id="comparison">
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Technical Comparison</h2>
-                <p>See how these flagship devices stack up against each other</p>
+                <h2>Contact Us</h2>
+                <p>Get in touch with our team for any questions or support</p>
             </div>
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Specification</th>
-                        <th>iPhone 17 Pro Max</th>
-                        <th>Samsung Galaxy S25 Ultra</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Display</td>
-                        <td class="spec-value">6.9" Super Retina XDR</td>
-                        <td class="spec-value">6.8" Dynamic AMOLED 2X</td>
-                    </tr>
-                    <tr>
-                        <td>Processor</td>
-                        <td class="spec-value">A18 Bionic Chip</td>
-                        <td class="spec-value">Snapdragon 8 Gen 3</td>
-                    </tr>
-                    <tr>
-                        <td>RAM</td>
-                        <td class="spec-value">8GB</td>
-                        <td class="spec-value">12GB / 16GB</td>
-                    </tr>
-                    <tr>
-                        <td>Storage</td>
-                        <td class="spec-value">256GB / 512GB / 1TB</td>
-                        <td class="spec-value">256GB / 512GB / 1TB</td>
-                    </tr>
-                    <tr>
-                        <td>Main Camera</td>
-                        <td class="spec-value">48MP Triple System</td>
-                        <td class="spec-value">200MP Quad System</td>
-                    </tr>
-                    <tr>
-                        <td>Battery</td>
-                        <td class="spec-value">All-day (4500mAh)</td>
-                        <td class="spec-value">5000mAh Fast Charging</td>
-                    </tr>
-                    <tr>
-                        <td>5G</td>
-                        <td class="spec-value">Yes + Satellite SOS</td>
-                        <td class="spec-value">Yes + 5G+</td>
-                    </tr>
-                    <tr>
-                        <td>Operating System</td>
-                        <td class="spec-value">iOS 18</td>
-                        <td class="spec-value">Android 15 with One UI 7</td>
-                    </tr>
-                    <tr>
-                        <td>Price</td>
-                        <td class="spec-value">From $1,299</td>
-                        <td class="spec-value">From $1,199</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Talk About Your Needs</h3>
+                    <p>We're here to help you find the perfect device and answer any questions you may have about our products and services.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email Address</h4>
+                                <p>nickybrick467@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone Number</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Our Location</h4>
+                                <p>123 Tech Avenue, Silicon Valley, CA 94025</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -715,15 +967,15 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>TechFusion</h3>
-                    <p>Your premier destination for cutting-edge mobile technology and innovation.</p>
+                    <p>Your premier destination for cutting-edge mobile technology and innovation. We bring you the latest devices from top brands.</p>
                 </div>
                 <div class="footer-column">
                     <h3>Products</h3>
                     <ul>
                         <li><a href="#">iPhone 17 Series</a></li>
                         <li><a href="#">Samsung S25 Series</a></li>
-                        <li><a href="#">Accessories</a></li>
-                        <li><a href="#">Trade-In Program</a></li>
+                        <li><a href="#">Google Pixel</a></li>
+                        <li><a href="#">OnePlus</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -738,14 +990,14 @@
                 <div class="footer-column">
                     <h3>Contact</h3>
                     <ul>
-                        <li><a href="#">support@techfusion.demo</a></li>
-                        <li><a href="#">1-800-TECH-FUSION</a></li>
+                        <li><a href="mailto:nickybrick467@gmail.com">nickybrick467@gmail.com</a></li>
+                        <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
                         <li><a href="#">Store Locations</a></li>
                     </ul>
                 </div>
             </div>
             <div class="disclaimer">
-                <p><strong>Educational Project Notice:</strong> This website is created for educational purposes only. iPhone 17 and Samsung Galaxy S25 are fictional products. All specifications, features, and pricing are imaginary and for demonstration purposes only.</p>
+                <p><strong>Educational Project Notice:</strong> This website is created for educational purposes only. All products, specifications, and pricing are fictional and for demonstration purposes only.</p>
             </div>
             <div class="copyright">
                 <p>&copy; 2023 TechFusion Demo. All rights reserved. This is a fictional website for educational use.</p>
@@ -766,6 +1018,13 @@
                     alert('Product added to cart! (This is a demo)');
                 }
             });
+        });
+        
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will contact you at nickybrick467@gmail.com soon.');
+            this.reset();
         });
         
         // Update copyright year automatically
